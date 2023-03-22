@@ -38,3 +38,10 @@ jobs:
       run: |
         export PYTHONPATH=src
         pytest
+    - name: Deploy  App
+      env:
+        Api_token: ${{ secrets.token }}
+        App_name: ${{ secrets.App_name }}
+      if: github.ref == 'ref/head/master' && job.status == 'success'
+      run: |
+       git remort add 
